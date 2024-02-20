@@ -1,4 +1,4 @@
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./Components/About";
@@ -8,7 +8,6 @@ import Users from "./Components/Users";
 function App() {
   return (
     <div className="App">
-      <Button>Install App</Button>
       <Router>
         <Navbar bg="primary" data-bs-theme="dark">
           <Container>
