@@ -6,22 +6,9 @@ import Home from "./Components/Home";
 import Users from "./Components/Users";
 
 function App() {
-  function installApp() {
-    if ("deferredPrompt" in window) {
-      window.deferredPrompt.prompt();
-      window.deferredPrompt.userChoice.then(function (choiceResult) {
-        if (choiceResult.outcome === "accepted") {
-          console.log("User accepted the install prompt");
-        } else {
-          console.log("User dismissed the install prompt");
-        }
-        window.deferredPrompt = null;
-      });
-    }
-  }
   return (
     <div className="App">
-      <Button onClick={installApp}>Install App</Button>
+      <Button>Install App</Button>
       <Router>
         <Navbar bg="primary" data-bs-theme="dark">
           <Container>
