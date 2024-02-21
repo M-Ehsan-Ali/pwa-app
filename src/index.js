@@ -6,7 +6,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import serviceWorkerDev from "./service-worker-dev";
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// Function to show the "Install App" button on mobile devices
+// Function to show the install button on mobile devices
 function showInstallButton() {
   const isMobile =
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -37,11 +37,24 @@ function showInstallButton() {
         });
       });
       document.body.appendChild(installButton);
+
+      // Show the "Continue Browsing" button below the install button
+      const continueButton = document.createElement("button");
+      continueButton.id = "continue-button";
+      continueButton.innerText = "Continue Browsing >";
+      continueButton.addEventListener("click", () => {
+        // Remove both buttons from the DOM when "Continue Browsing" is clicked
+        document.body.removeChild(installButton);
+        document.body.removeChild(continueButton);
+        // Handle the action when the user clicks "Continue Browsing"
+        console.log("Continue Browsing button clicked");
+      });
+      document.body.appendChild(continueButton);
     });
   }
 }
 
-// Call the function to show the "Install App" button on mobile devices
+// Call the function to show the appropriate button based on the device type
 showInstallButton();
 
 root.render(

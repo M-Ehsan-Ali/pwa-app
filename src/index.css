@@ -27,3 +27,19 @@ code {
 #install-button:hover {
   background-color: #0056b3;
 }
+
+#continue-button {
+  position: fixed;
+  bottom: 20px; /* Adjust this value to position it below the Install App button */
+  left: 20px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#continue-button:hover {
+  color: #0056b3; /* Change color on hover */
+}
