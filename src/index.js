@@ -6,36 +6,42 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import serviceWorkerDev from "./service-worker-dev";
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// Function to show the "Install App" button
+// Function to show the "Install App" button on mobile devices
 function showInstallButton() {
-  window.addEventListener("beforeinstallprompt", (event) => {
-    // Prevent Chrome 67 and earlier from automatically showing the prompt
-    event.preventDefault();
-    // Stash the event so it can be triggered later
-    let deferredPrompt = event;
+  const isMobile =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  if (isMobile) {
+    window.addEventListener("beforeinstallprompt", (event) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt
+      event.preventDefault();
+      // Stash the event so it can be triggered later
+      let deferredPrompt = event;
 
-    // Show the install button
-    const installButton = document.createElement("button");
-    installButton.id = "install-button";
-    installButton.innerText = "Install App";
-    installButton.addEventListener("click", () => {
-      // Show the install prompt
-      deferredPrompt.prompt();
-      // Wait for the user to respond to the prompt
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === "accepted") {
-          console.log("User accepted the A2HS prompt");
-        } else {
-          console.log("User dismissed the A2HS prompt");
-        }
-        deferredPrompt = null;
+      // Show the install button
+      const installButton = document.createElement("button");
+      installButton.id = "install-button";
+      installButton.innerText = "Install App";
+      installButton.addEventListener("click", () => {
+        // Show the install prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === "accepted") {
+            console.log("User accepted the A2HS prompt");
+          } else {
+            console.log("User dismissed the A2HS prompt");
+          }
+          deferredPrompt = null;
+        });
       });
+      document.body.appendChild(installButton);
     });
-    document.body.appendChild(installButton);
-  });
+  }
 }
 
-// Call the function to show the "Install App" button
+// Call the function to show the "Install App" button on mobile devices
 showInstallButton();
 
 root.render(
