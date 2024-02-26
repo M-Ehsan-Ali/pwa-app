@@ -1,11 +1,28 @@
+import { useEffect } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./Components/About";
 import Home from "./Components/Home";
 import Users from "./Components/Users";
+import firebase from "./firebase";
 
 function App() {
+  useEffect(() => {
+    const msg = firebase.messaging();
+    msg
+      .requestPermission()
+      .then(() => {
+        return msg.getToken();
+      })
+      .then((data) => {
+        console.warn("token", data);
+      })
+      .catch((error) => {
+        console.warn("Error requesting permission:", error);
+      });
+  }, []);
+
   return (
     <div className="App">
       <Router>
