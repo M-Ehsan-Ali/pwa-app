@@ -13,8 +13,7 @@ export default function serviceWorkerDev() {
   }
   function determineAppServerKey() {
     var vapidPublicKey =
-      "YJIdnnvduniuiyy-diufDUH9-876fbjd2r678-fiunfvjkn8-fwijhfjw-fidfiugduybcyvyudvby74ydwui28ghdg6";
-    console.log("VAPID Public Key:", vapidPublicKey);
+      "BIDlfvWdHHF6M1KsfkqInkqsyR8rH8t9c-S4fFq-C8cUWrTcRoBZDz0jmEjZT3KHLJOo_N_L7-pYOspM1vZqJAI";
     return urlBaseToUnit8Array(vapidPublicKey);
   }
   let swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
