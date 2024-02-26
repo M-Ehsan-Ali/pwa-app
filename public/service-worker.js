@@ -18,7 +18,9 @@ this.addEventListener("install", (event) =>
 
 this.addEventListener("fetch", (event) => {
   if (!navigator.onLine) {
-    if (event.request.url === "http://localhost:3000/manifest.json") {
+    if (
+      event.request.url === "https://pwa-app-eight.vercel.app/manifest.json"
+    ) {
       event.waitUntil(
         this.registration.showNotification("Internet", {
           body: "Your internet is not working",
