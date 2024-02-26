@@ -10,6 +10,7 @@ this.addEventListener("install", (event) =>
           "/static/js/bundle.js",
           "/index.html",
           "/",
+          "/about",
           "/users",
         ])
       )

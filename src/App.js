@@ -16,7 +16,8 @@ function App() {
         return msg.getToken();
       })
       .then((data) => {
-        console.warn("token", data);
+        // console.warn("token", data);
+        console.warn("token::>>", "hihihihi");
       })
       .catch((error) => {
         console.warn("Error requesting permission:", error);
@@ -30,22 +31,22 @@ function App() {
           <Container>
             <Navbar.Brand href="/">Navbar</Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link>
-                <Link to="/">Home</Link>
+              <Nav.Link as={Link} to="/">
+                Home
               </Nav.Link>
-              <Nav.Link>
-                <Link to="about">About</Link>
+              <Nav.Link as={Link} to="/about">
+                About
               </Nav.Link>
-              <Nav.Link>
-                <Link to="users">Users</Link>
+              <Nav.Link as={Link} to="/users">
+                Users
               </Nav.Link>
             </Nav>
           </Container>
         </Navbar>
         <Routes>
-          <Route path="/" Component={Home} />
-          <Route path="/about" Component={About} />
-          <Route path="/users" Component={Users} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/users" element={<Users />} />
         </Routes>
       </Router>
     </div>

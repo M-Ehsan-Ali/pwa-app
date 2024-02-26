@@ -9,7 +9,7 @@ const Users = () => {
     fetch(url)
       .then((response) =>
         response.json().then((result) => {
-          console.warn(result);
+          // console.warn(result);
           setData(result);
           localStorage.setItem("users", JSON.stringify(result));
         })

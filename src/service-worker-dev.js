@@ -20,12 +20,12 @@ export default function serviceWorkerDev() {
   navigator.serviceWorker
     .register(swUrl)
     .then((response) => {
-      console.warn("response", response);
+      // console.warn("response", response);
       return response.pushManager
         .getSubscription()
         .then(function (subscription) {
           if (subscription) {
-            console.log("Subscription exists:", subscription);
+            // console.log("Subscription exists:", subscription);
             return subscription;
           }
           return response.pushManager.subscribe({
