@@ -20,7 +20,8 @@ this.addEventListener("install", (event) =>
 this.addEventListener("fetch", (event) => {
   if (!navigator.onLine) {
     if (
-      event.request.url === "https://pwa-app-eight.vercel.app/manifest.json"
+      event.request.url ===
+      "https://pwa-app-eight.vercel.app/static/js/main.chunk.js"
     ) {
       event.waitUntil(
         this.registration.showNotification("Internet", {
