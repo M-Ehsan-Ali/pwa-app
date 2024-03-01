@@ -1,17 +1,28 @@
-importScripts("https://www.gstatic.com/firebasejs/3.5.0/firebase-app.js");
-importScripts("https://www.gstatic.com/firebasejs/3.5.0/firebase-messaging.js");
+// Scripts for firebase and firebase messaging
+importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js");
+importScripts("https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js");
 
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("../firebase-messaging-sw.js")
-    .then(function (registeration) {
-      console.log("Registration successful, scope is:", registeration.scope);
-    })
-    .catch(function (err) {
-      console.log("Service Worker registration failed, error:", err);
-    });
-}
-firebase.initializeApp({
-  messagingSenderId: "918710150267",
+// Initialize the Firebase app in the service worker by passing the generated config
+const firebaseConfig = {
+  apiKey: "AIzaSyDvcWHmQMDHH6d5snJMdNrer6YnioDI7zA",
+  authDomain: "fair-column-343422.firebaseapp.com",
+  projectId: "fair-column-343422",
+  storageBucket: "fair-column-343422.appspot.com",
+  messagingSenderId: "409796469282",
+  appId: "1:409796469282:web:60c3af69a28d2f6ebe607b",
+};
+
+firebase.initializeApp(firebaseConfig);
+
+// Retrieve firebase messaging
+const messaging = firebase.messaging();
+
+messaging.onBackgroundMessage(function (payload) {
+  // Customize notification here
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
+    body: payload.notification.body,
+  };
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
 });
-const initMessaging = firebase.messaging();

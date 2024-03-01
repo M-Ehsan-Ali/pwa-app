@@ -1,13 +1,39 @@
-import firebase from "firebase";
-
+import { initializeApp } from "firebase/app";
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
+// Replace this firebaseConfig object with the congurations for the project you created on your firebase console.
 var firebaseConfig = {
-  apiKey: "AIzaSyA7n-FkuxM9GJJuiZrCARHZ0SDLhGgFTIU",
-  authDomain: "wired-axis-410813.firebaseapp.com",
-  projectId: "wired-axis-410813",
-  storageBucket: "wired-axis-410813.appspot.com",
-  messagingSenderId: "918710150267",
-  appId: "1:918710150267:web:8157c316fb661292fa2ede",
-  measurementId: "G-GG6LHYB700",
+  apiKey: "AIzaSyDvcWHmQMDHH6d5snJMdNrer6YnioDI7zA",
+  authDomain: "fair-column-343422.firebaseapp.com",
+  projectId: "fair-column-343422",
+  storageBucket: "fair-column-343422.appspot.com",
+  messagingSenderId: "409796469282",
+  appId: "1:409796469282:web:60c3af69a28d2f6ebe607b",
 };
-firebase.initializeApp(firebaseConfig);
-export default firebase;
+
+initializeApp(firebaseConfig);
+const messaging = getMessaging();
+export const requestForToken = (setToken) => {
+  const theVapidKey =
+    "BIqveAM0tHsLnBLw89S_Hm0L-bwgNr6sCkPg1H019mQWkpabI9j3st66-Okr9WbqIVWSpXtvzogzqvDLpJrna-s";
+  return getToken(messaging, { vapidKey: theVapidKey })
+    .then((currentToken) => {
+      if (currentToken) {
+        setToken(currentToken);
+        // Perform any other neccessary action with the token
+      } else {
+        // Show permission request UI
+        console.log(
+          "No registration token available. Request permission to generate one."
+        );
+      }
+    })
+    .catch((err) => {
+      console.log("An error occurred while retrieving token. ", err);
+    });
+};
+export const onMessageListener = () =>
+  new Promise((resolve) => {
+    onMessage(messaging, (payload) => {
+      resolve(payload);
+    });
+  });

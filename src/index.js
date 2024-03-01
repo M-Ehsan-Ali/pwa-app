@@ -1,12 +1,10 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import serviceWorkerDev from "./service-worker-dev";
-const root = ReactDOM.createRoot(document.getElementById("root"));
-// Function to show the install button on mobile devices
+import serviceWorkerDev from "./sw-dev";
+
 function showInstallButton() {
   const isMobile =
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -56,7 +54,7 @@ function showInstallButton() {
 
 // Call the function to show the appropriate button based on the device type
 showInstallButton();
-
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <App />

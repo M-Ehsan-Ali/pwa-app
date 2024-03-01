@@ -13,10 +13,10 @@ export default function serviceWorkerDev() {
   }
   function determineAppServerKey() {
     var vapidPublicKey =
-      "BIDlfvWdHHF6M1KsfkqInkqsyR8rH8t9c-S4fFq-C8cUWrTcRoBZDz0jmEjZT3KHLJOo_N_L7-pYOspM1vZqJAI";
+      "BIqveAM0tHsLnBLw89S_Hm0L-bwgNr6sCkPg1H019mQWkpabI9j3st66-Okr9WbqIVWSpXtvzogzqvDLpJrna-s";
     return urlBaseToUnit8Array(vapidPublicKey);
   }
-  let swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+  let swUrl = `${process.env.PUBLIC_URL}/sw.js`;
   navigator.serviceWorker
     .register(swUrl)
     .then((response) => {
